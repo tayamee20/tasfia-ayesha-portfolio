@@ -10,9 +10,11 @@ const bgs: Record<ShapeColor, string> = {
 };
 
 /** One square tile of the hero poster. Drifts with the pointer and spins when hovered. */
-function Tile({ bg, kind, color, depth, delay, mx, my, spin = 90, className = '' }: {
+function Tile({ bg, kind, color, depth, delay, mx, my, spin = 90, className = '', photo }: {
   bg: ShapeColor; kind: ShapeKind; color: ShapeColor; depth: number; delay: number;
   mx: MotionValue<number>; my: MotionValue<number>; spin?: number; className?: string;
+  /** A cut-out photo shown instead of the shape. */
+  photo?: string;
 }) {
   const x = useTransform(mx, (v) => v * depth);
   const y = useTransform(my, (v) => v * depth);
@@ -24,9 +26,25 @@ function Tile({ bg, kind, color, depth, delay, mx, my, spin = 90, className = ''
         animate={{ scale: 1, rotate: 0 }}
         transition={{ type: 'spring', stiffness: 140, damping: 16, delay }}
       >
-        <motion.div className="w-[72%]" whileHover={{ rotate: spin, scale: 1.08 }} transition={{ type: 'spring', stiffness: 200, damping: 14 }}>
-          <Shape kind={kind} color={color} className="block w-full" />
-        </motion.div>
+        {photo ? (
+          <div className="relative h-full w-full">
+            <Shape kind={kind} color={color} className="absolute left-1/2 top-[14%] w-[62%] -translate-x-1/2" />
+            <motion.img
+              src={photo}
+              alt=""
+              width={800}
+              height={800}
+              className="relative h-full w-full object-cover object-bottom"
+              whileHover={{ scale: 1.06 }}
+              style={{ transformOrigin: 'bottom center' }}
+              transition={{ type: 'spring', stiffness: 200, damping: 14 }}
+            />
+          </div>
+        ) : (
+          <motion.div className="w-[72%]" whileHover={{ rotate: spin, scale: 1.08 }} transition={{ type: 'spring', stiffness: 200, damping: 14 }}>
+            <Shape kind={kind} color={color} className="block w-full" />
+          </motion.div>
+        )}
       </motion.div>
     </motion.div>
   );
@@ -59,7 +77,7 @@ export function Hero() {
             <SplitText text={profile.firstName} delay={0.1} />
           </p>
           <div className="col-span-12 grid grid-cols-4 gap-3 sm:gap-4 lg:col-span-4 lg:grid-cols-2 lg:pb-2">
-            <Tile bg="lavender" kind="circle" color="volt" depth={10} delay={0.55} mx={mx} my={my} />
+            <Tile bg="lavender" kind="circle" color="paper" depth={10} delay={0.55} mx={mx} my={my} photo="/images/tasfia-tile.webp" />
             <Tile bg="coral" kind="arch" color="paper" depth={-14} delay={0.65} mx={mx} my={my} spin={180} />
             <Tile bg="ink" kind="flower" color="lime" depth={8} delay={0.75} mx={mx} my={my} className="lg:hidden" />
             <Tile bg="lime" kind="quarter" color="ink" depth={-6} delay={0.85} mx={mx} my={my} className="lg:hidden" />

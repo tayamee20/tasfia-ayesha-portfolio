@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { projects } from '../content/projects';
 import { moreProjects } from '../content/site';
 import { Reveal } from '../components/ui/Reveal';
 import { Shape } from '../components/ui/Shape';
 import { ProjectCard } from './ProjectCard';
+
+/** How many projects show before "Show more projects". */
+const INITIAL_COUNT = 4;
 
 /** Asymmetric editorial rhythm. Repeats if you add more projects. */
 const layout = [
@@ -14,6 +18,9 @@ const layout = [
 ];
 
 export function SelectedWork() {
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? projects : projects.slice(0, INITIAL_COUNT);
+  const hidden = projects.length - INITIAL_COUNT;
   return (
     <section id="work" aria-labelledby="work-title" className="relative py-20 lg:py-28">
       <div className="page-x">
@@ -29,13 +36,13 @@ export function SelectedWork() {
           </Reveal>
           <Reveal className="col-span-12 lg:col-span-4" delay={0.1}>
             <p className="max-w-[40ch] text-lg text-smoke">
-              Product, web and platform design across education, coaching, security tools and simulation. Open a project for the full story.
+              Product, web and platform design across education, coaching, climate, nonprofits and simulation. Open a project for the full story.
             </p>
           </Reveal>
         </div>
 
         <div className="grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-2 lg:grid-cols-12 lg:gap-y-24">
-          {projects.map((p, i) => {
+          {visible.map((p, i) => {
             const l = layout[i % layout.length];
             return (
               <div key={p.slug} className={l.cell}>
@@ -44,6 +51,22 @@ export function SelectedWork() {
             );
           })}
         </div>
+
+        {hidden > 0 && (
+          <div className="mt-16 flex justify-center lg:mt-20">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+              className="group inline-flex min-h-[48px] items-center gap-2.5 rounded-full border-2 border-ink px-6 py-3 font-semibold transition-[background,color,transform] duration-300 hover:-translate-y-0.5 hover:bg-ink hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-volt"
+            >
+              {showAll ? 'Show fewer projects' : `Show more projects (${hidden})`}
+              <svg className={`h-4 w-4 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         {/* More projects */}
         <div className="mt-28 grid grid-cols-12 gap-y-8 lg:gap-x-10">

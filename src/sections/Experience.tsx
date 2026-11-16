@@ -16,7 +16,7 @@ export function Experience() {
                 Where I’ve worked
               </h2>
               <p className="mt-6 max-w-[34ch] text-lg text-smoke">
-                Remote teams in Finland and Türkiye, a national telecom in Dhaka, and an AI start-up. Newest first.
+                Remote teams in Finland and Türkiye, a national telecom in Dhaka and my university. Newest first.
               </p>
             </Reveal>
           </div>

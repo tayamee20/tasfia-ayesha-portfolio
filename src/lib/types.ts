@@ -49,8 +49,12 @@ export interface Project {
   categories: string[];
   accent: Accent;
   cover: ImageAsset;
+  /** e.g. 'In design phase' or 'Ongoing'. Shown on the card and the case study. */
+  status?: string;
   /** Extra facts shown on the case study, e.g. client, platform, technology context. */
   facts?: { label: string; value: string }[];
+  /** External links shown as buttons on the case study: live site, Figma file, posts. */
+  links?: { label: string; href: string }[];
   caseStudy: CaseStudy;
 }
 

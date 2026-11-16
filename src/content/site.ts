@@ -8,12 +8,12 @@ export const profile = {
   name: 'Tasfia Ayesha',
   firstName: 'Tasfia',
   lastName: 'Ayesha',
-  title: 'UI/UX Designer',
+  title: 'UI/UX Designer & Project Manager',
   location: 'Dhaka, Bangladesh',
   available: true,
   headline: 'I design digital products that make complicated things feel clear.',
   intro:
-    'I’m a UI/UX designer with a Computer Science degree, working on web and mobile products for teams in Finland, Türkiye and Bangladesh — from AI career tools to drone simulators.',
+    'I’m a UI/UX designer and project manager with a Computer Science degree. I design web and mobile products, lead projects and look after client communication for teams in Finland, Türkiye and Bangladesh — from AI career tools to drone simulators.',
 };
 
 export const links = {
@@ -31,7 +31,7 @@ export const about = {
   statement: 'I studied how software works so I could design how it feels.',
   paragraphs: [
     'I came to design through engineering. At BRAC University I studied Computer Science and Engineering, wrote a thesis on securing medical images with a hybrid DNA–AES cryptosystem, and built web apps with React and Spring Boot along the way. Somewhere between debugging and drawing wireframes, I realised the part I cared about most was the person on the other side of the screen.',
-    'Since then I’ve designed for a telecom super-app, an AI education and career platform, a Finnish coaching business, an OSINT tool and a drone simulator. The products are very different, but the job is the same: understand the system, find what people actually need from it, and shape an interface that gets out of their way.',
+    'Since then I’ve designed for a telecom super-app, an AI education and career platform, a Finnish coaching business, a training app for trainers and gyms, an EU climate-education project, a Rotary club and a drone simulator. The products are very different, but the job is the same: understand the system, find what people actually need from it, and shape an interface that gets out of their way.',
     'Knowing how things are built changes how I design. I can talk through constraints with developers, spot when a flow will fight the data model, and hand over designs that survive implementation. I care about clear hierarchy, honest copy and details that make a product feel considered.',
   ],
   education: {
@@ -48,7 +48,7 @@ export const about = {
 export const experience: Job[] = [
   {
     company: 'TUTORS Finland Oy',
-    role: 'UI/UX Designer',
+    role: 'UI/UX Designer, Project Manager and Client Communication',
     place: 'Remote',
     start: 'Oct 2024',
     end: 'Present',
@@ -56,16 +56,9 @@ export const experience: Job[] = [
     points: [
       'Collaborate with international teams on digital products and website design projects.',
       'Lead the end-to-end design process for web and mobile, from user research and wireframes to prototypes and final designs in Figma.',
-    ],
-  },
-  {
-    company: 'NeduAI',
-    role: 'Design team',
-    place: '[Location]',
-    start: '[Start date]',
-    end: '[End date]',
-    points: [
-      'Designed for AI-powered education and career products, including Smart Profile, Career Advisor, dashboards, onboarding and the job portal.',
+      'Manage projects and lead client communication, from understanding what clients need to agreeing fixes and delivery.',
+      'Project lead for the Rotary Mijas International website redesign.',
+      'Projects include NeduAI, Equipa, XC Party, AnimateEarth, Rotary Mijas International and GameSim.',
     ],
   },
   {
@@ -113,6 +106,11 @@ export const skills: { group: string; note: string; items: string[] }[] = [
     ],
   },
   {
+    group: 'Project leadership',
+    note: 'How I run projects',
+    items: ['Project management', 'Client communication', 'Project leadership'],
+  },
+  {
     group: 'Design tools',
     note: 'Where I work',
     items: ['Figma', 'FigJam', 'Adobe XD', 'Adobe Photoshop', 'Adobe Illustrator'],
@@ -157,10 +155,5 @@ export const moreProjects: MoreProject[] = [
     kind: 'Machine learning',
     description: 'A model that predicts car prices from trained data.',
     year: '2022',
-  },
-  {
-    name: '[Your next project]',
-    kind: '[Mobile app, dashboard or experiment]',
-    description: '[Placeholder: add another web app, mobile app, dashboard or design experiment here.]',
   },
 ];

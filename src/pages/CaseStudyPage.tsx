@@ -4,7 +4,7 @@ import { getNextProject, getProject } from '../content/projects';
 import { accentClasses } from '../lib/accents';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { PageTransition } from '../components/layout/PageTransition';
-import { Arrow } from '../components/ui/ButtonLink';
+import { Arrow, ButtonLink } from '../components/ui/ButtonLink';
 import { ImageFrame } from '../components/ui/ImageFrame';
 import { Placeholder } from '../components/ui/Placeholder';
 import { Reveal } from '../components/ui/Reveal';
@@ -40,6 +40,7 @@ export function CaseStudyPage() {
   const facts = [
     { label: 'My role', value: project.role },
     ...(project.year ? [{ label: 'Year', value: project.year }] : []),
+    ...(project.status ? [{ label: 'Status', value: project.status }] : []),
     { label: 'Categories', value: project.categories.join(', ') },
     ...(project.facts ?? []),
   ];
@@ -70,10 +71,19 @@ export function CaseStudyPage() {
               </div>
             ))}
           </dl>
+          {project.links?.length ? (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {project.links.map((l, i) => (
+                <ButtonLink key={l.href} to={l.href} variant={i === 0 ? 'solid' : 'outline'}>
+                  {l.label} <Arrow />
+                </ButtonLink>
+              ))}
+            </div>
+          ) : null}
         </header>
 
         <div className="page-x">
-          <ImageFrame image={project.cover} accent={project.accent} aspect="aspect-[4/3] sm:aspect-[16/8]" eager />
+          <ImageFrame image={project.cover} accent={project.accent} aspect="aspect-[16/10]" eager framed />
         </div>
 
         <div className="page-x mt-16">
@@ -116,6 +126,7 @@ export function CaseStudyPage() {
         </div>
 
         {/* Wireframes: wide gallery on a tinted band */}
+        {cs.wireframes.length > 0 && (
         <section aria-labelledby="wireframes" className={`mt-6 py-16 lg:py-24 ${a.soft}`}>
           <div className="page-x">
             <h2 id="wireframes" className="font-display text-3xl font-bold tracking-[-0.03em]">Wireframes and iterations</h2>
@@ -129,8 +140,10 @@ export function CaseStudyPage() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Final designs: large, annotated */}
+        {cs.finalDesigns.length > 0 && (
         <section aria-labelledby="final" className="page-x py-16 lg:py-24">
           <h2 id="final" className="font-display text-3xl font-bold tracking-[-0.03em]">Final designs</h2>
           <div className="mt-10 grid gap-14">
@@ -147,6 +160,7 @@ export function CaseStudyPage() {
             ))}
           </div>
         </section>
+        )}
 
         <div className="page-x">
           <Block id="learnings" title="Challenges and learnings">

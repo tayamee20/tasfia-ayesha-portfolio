@@ -13,17 +13,25 @@ export function About() {
             <p className="font-display text-[clamp(2.2rem,4.6vw,4rem)] font-bold leading-[0.98] tracking-[-0.04em]">{about.statement}</p>
           </Reveal>
 
-          {/* Portrait slot: replace the placeholder with <img src="/images/tasfia.webp" ...> */}
+          {/* Portrait: cut-out photo standing in front of an arch. File lives in /public/images */}
           <Reveal delay={0.1} className="relative mt-12 max-w-[420px]">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-t-full bg-lavender" role="img" aria-label="Placeholder for a portrait of Tasfia">
-              <Shape kind="circle" color="volt" className="absolute -bottom-[12%] -left-[12%] w-[60%]" />
-              <div className="absolute inset-x-[12%] top-[46%] rounded-2xl bg-paper/95 p-4 text-center">
-                <p className="font-display text-sm font-semibold text-volt">Image placeholder</p>
-                <p className="text-sm">Your portrait</p>
+            <div className="relative aspect-[4/5]">
+              <div className="absolute inset-x-0 bottom-0 top-[10%] overflow-hidden rounded-t-full bg-coral">
+                <Shape kind="circle" color="lime" className="absolute -bottom-[14%] -left-[14%] w-[58%]" />
+                <Shape kind="quarter" color="volt" className="absolute -right-[6%] bottom-[18%] w-[30%] -rotate-90" />
               </div>
+              <img
+                src="/images/tasfia-cutout.webp"
+                alt="Tasfia Ayesha in a black blazer and white trousers, sitting and smiling"
+                width={880}
+                height={1100}
+                loading="lazy"
+                decoding="async"
+                className="relative h-full w-full object-contain object-bottom"
+              />
             </div>
-            <Shape kind="flower" color="lime" className="absolute -right-6 -top-6 w-24 animate-[spin_26s_linear_infinite]" />
-            <Shape kind="pill" color="coral" className="absolute -bottom-5 right-8 w-28 rotate-[-14deg]" />
+            <Shape kind="flower" color="ink" className="absolute -right-6 top-[6%] w-20 animate-[spin_26s_linear_infinite]" />
+            <Shape kind="pill" color="volt" className="absolute -bottom-5 -left-6 w-28 rotate-[-14deg]" />
           </Reveal>
         </div>
 
