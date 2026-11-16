@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from 'framer-motion';
+import { motion, useMotionValue, useScroll, useSpring, useTransform, type MotionValue } from 'framer-motion';
 import type { PointerEvent } from 'react';
 import { profile } from '../content/site';
 import { Arrow, ButtonLink } from '../components/ui/ButtonLink';
@@ -16,8 +16,10 @@ function Tile({ bg, kind, color, depth, delay, mx, my, spin = 90, className = ''
   /** A cut-out photo shown instead of the shape. */
   photo?: string;
 }) {
+  // Follows the mouse on desktop; on every device the tiles also drift apart as the page scrolls.
+  const { scrollY } = useScroll();
   const x = useTransform(mx, (v) => v * depth);
-  const y = useTransform(my, (v) => v * depth);
+  const y = useTransform([my, scrollY], ([v, sy]: number[]) => v * depth + Math.min(sy, 600) * depth * -0.012);
   return (
     <motion.div style={{ x, y }} className={`aspect-square ${className}`} aria-hidden="true">
       <motion.div
@@ -36,12 +38,13 @@ function Tile({ bg, kind, color, depth, delay, mx, my, spin = 90, className = ''
               height={800}
               className="relative h-full w-full object-cover object-bottom"
               whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 1.06 }}
               style={{ transformOrigin: 'bottom center' }}
               transition={{ type: 'spring', stiffness: 200, damping: 14 }}
             />
           </div>
         ) : (
-          <motion.div className="w-[72%]" whileHover={{ rotate: spin, scale: 1.08 }} transition={{ type: 'spring', stiffness: 200, damping: 14 }}>
+          <motion.div className="w-[72%]" whileHover={{ rotate: spin, scale: 1.08 }} whileTap={{ rotate: spin, scale: 1.08 }} transition={{ type: 'spring', stiffness: 200, damping: 14 }}>
             <Shape kind={kind} color={color} className="block w-full" />
           </motion.div>
         )}

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { skills } from '../content/site';
 import { Reveal } from '../components/ui/Reveal';
 
@@ -24,9 +25,18 @@ export function Skills() {
                 <span className="text-sm text-paper/70">{g.note}</span>
               </div>
               <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-                {g.items.map((s) => (
+                {g.items.map((s, si) => (
                   <li key={s} className="group flex items-center gap-2.5 font-display text-[clamp(1.35rem,2.2vw,1.8rem)] font-medium tracking-[-0.02em]">
-                    <span className={`h-2.5 w-2.5 rounded-full transition-transform duration-300 group-hover:scale-150 ${dot[gi % dot.length]}`} aria-hidden="true" />
+                    <motion.span
+                      className="block"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 12, delay: 0.2 + si * 0.05 }}
+                      aria-hidden="true"
+                    >
+                      <span className={`block h-2.5 w-2.5 rounded-full transition-transform duration-300 group-hover:scale-150 ${dot[gi % dot.length]}`} />
+                    </motion.span>
                     {s}
                   </li>
                 ))}

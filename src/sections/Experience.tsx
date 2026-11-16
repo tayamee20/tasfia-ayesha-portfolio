@@ -34,11 +34,19 @@ export function Experience() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className={`relative z-10 mt-1 grid h-10 w-10 place-items-center rounded-full border-2 border-ink ${job.current ? 'bg-lime' : 'bg-paper'}`}>
-                <Shape
-                  kind={markers[i % markers.length]}
-                  color={job.current ? 'ink' : 'volt'}
-                  className="w-5 transition-transform duration-500 group-hover:rotate-180"
-                />
+                <motion.span
+                  className="block w-5"
+                  initial={{ rotate: -180, scale: 0.4 }}
+                  whileInView={{ rotate: 0, scale: 1 }}
+                  viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+                  transition={{ type: 'spring', stiffness: 160, damping: 14, delay: 0.15 }}
+                >
+                  <Shape
+                    kind={markers[i % markers.length]}
+                    color={job.current ? 'ink' : 'volt'}
+                    className="w-5 transition-transform duration-500 group-hover:rotate-180"
+                  />
+                </motion.span>
               </span>
               <div>
                 <p className="flex flex-wrap items-center gap-2 text-[0.95rem] font-semibold text-smoke">

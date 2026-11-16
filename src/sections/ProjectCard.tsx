@@ -1,10 +1,14 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import type { Project } from '../lib/types';
 import { Arrow } from '../components/ui/ButtonLink';
 import { ImageFrame } from '../components/ui/ImageFrame';
 
 export function ProjectCard({ project, aspect, index }: { project: Project; aspect: string; index: number }) {
+  // On touch screens there is no hover, so the card plays its hover state while it sits in the middle of the screen.
+  const ref = useRef<HTMLDivElement>(null);
+  const centred = useInView(ref, { margin: '-30% 0px -30% 0px' });
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
@@ -13,7 +17,7 @@ export function ProjectCard({ project, aspect, index }: { project: Project; aspe
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: (index % 2) * 0.08 }}
     >
       <Link to={`/work/${project.slug}`} className="group block rounded-[30px]" aria-label={`${project.name} case study`}>
-        <div className="relative transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:-rotate-[0.8deg] group-hover:scale-[0.985] [&_.frame-media]:transition-transform [&_.frame-media]:duration-700 [&_.frame-media]:ease-[cubic-bezier(.16,1,.3,1)] group-hover:[&_.frame-media]:scale-[1.06] [&_.frame-window]:-rotate-[1.5deg] group-hover:[&_.frame-window]:-translate-y-2 group-hover:[&_.frame-window]:rotate-0 group-hover:[&_.frame-window]:scale-[1.04]">
+        <div ref={ref} data-centred={centred} className="card-frame relative">
           <ImageFrame image={{ ...project.cover, caption: undefined }} accent={project.accent} aspect={aspect} framed />
           <span
             aria-hidden="true"

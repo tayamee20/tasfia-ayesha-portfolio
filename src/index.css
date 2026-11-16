@@ -39,3 +39,25 @@
     background-image: repeating-linear-gradient(-45deg, rgba(31,29,36,.06) 0 10px, transparent 10px 20px);
   }
 }
+
+/* Project card motion. Hover on desktop; on touch screens the same state plays when the card is centred on screen. */
+@layer components {
+  .card-frame,
+  .card-frame .frame-window,
+  .card-frame .frame-media { transition: transform .7s cubic-bezier(.16,1,.3,1); }
+  .card-frame .frame-window { transform: rotate(-1.5deg); }
+
+  @media (hover: hover) {
+    .group:hover .card-frame { transform: rotate(-0.8deg) scale(.985); }
+    .group:hover .card-frame .frame-window { transform: translateY(-.5rem) scale(1.04); }
+    .group:hover .card-frame .frame-media { transform: scale(1.06); }
+  }
+  @media (hover: none) {
+    .card-frame .frame-window { transform: rotate(-4deg) translateY(.75rem) scale(.96); }
+    .card-frame[data-centred='true'] .frame-window { transform: translateY(-.25rem) scale(1.02); }
+    .card-frame[data-centred='true'] .frame-media { transform: scale(1.04); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-frame, .card-frame .frame-window, .card-frame .frame-media { transition: none; }
+  }
+}

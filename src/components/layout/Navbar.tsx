@@ -35,6 +35,7 @@ export function Navbar() {
   }, [open]);
 
   return (
+    <>
     <header
       className={`sticky top-0 z-40 transition-[background,box-shadow] duration-300 ${
         scrolled || open ? 'bg-paper/90 shadow-[0_1px_0_rgba(31,29,36,.08)] backdrop-blur-md' : ''
@@ -47,8 +48,8 @@ export function Navbar() {
       <nav aria-label="Main" className="page-x flex h-[72px] items-center justify-between gap-6">
         <Link to="/" className="group flex items-center gap-2.5 font-display text-lg font-bold tracking-tight">
           <span className="relative h-8 w-8">
-            <Shape kind="circle" color="lavender" className="absolute inset-0 transition-transform duration-500 group-hover:-translate-x-1" />
-            <Shape kind="half" color="coral" className="absolute inset-0 translate-x-2 transition-transform duration-500 group-hover:translate-x-3 group-hover:rotate-180" />
+            <Shape kind="circle" color="lavender" className="absolute inset-0 transition-transform duration-500 group-hover:-translate-x-1 group-active:-translate-x-1" />
+            <Shape kind="half" color="coral" className="absolute inset-0 translate-x-2 transition-transform duration-500 group-hover:translate-x-3 group-hover:rotate-180 group-active:translate-x-3 group-active:rotate-180" />
           </span>
           {profile.name}
         </Link>
@@ -87,7 +88,9 @@ export function Navbar() {
           <span className={`absolute h-0.5 w-5 bg-current transition-transform duration-300 ${open ? '-rotate-45' : 'translate-y-1.5'}`} />
         </button>
       </nav>
+    </header>
 
+      {/* The menu sits outside <header>: the header's backdrop blur would otherwise trap this fixed panel inside the 72px bar. */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -106,7 +109,7 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <Link to={{ pathname: '/', hash: it.hash }} className="block py-2 font-display text-5xl font-bold tracking-squeeze">
+                  <Link to={{ pathname: '/', hash: it.hash }} onClick={() => setOpen(false)} className="block py-2 font-display text-5xl font-bold tracking-squeeze">
                     {it.label}
                   </Link>
                 </motion.li>
@@ -120,6 +123,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
