@@ -22,7 +22,7 @@ export const links = {
   linkedin: 'https://www.linkedin.com/in/tasfia-ayesha-129708210/?trk=opento_sprofile_details',
   dribbble: 'https://dribbble.com/tayami',
   github: 'https://github.com/tayamee20',
-  // TODO: upload your CV to /public and point to it, e.g. '/Tasfia-Ayesha-CV.pdf'
+  // Add your CV to /public and set this to its path, e.g. '/Tasfia-Ayesha-CV.pdf'. The download buttons appear once it's set.
   cv: '',
 };
 
@@ -57,6 +57,7 @@ export const experience: Job[] = [
       'Lead the end-to-end design process for web and mobile, from user research and wireframes to prototypes and final designs in Figma.',
       'Manage projects and lead client communication, from understanding what clients need to agreeing fixes and delivery.',
       'Project lead for the Rotary Mijas International website redesign.',
+      'Designed Equipa and built its front end with the development team.',
       'Projects include NeduAI, Equipa, XC Party, AnimateEarth, Rotary Mijas International and GameSim.',
     ],
   },

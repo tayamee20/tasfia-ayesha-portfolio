@@ -63,6 +63,11 @@ export function Contact() {
                     </motion.span>
                   </AnimatePresence>
                 </button>
+                {links.cv && (
+                  <a href={links.cv} download className="group inline-flex min-h-[56px] items-center gap-2 rounded-full border-2 border-ink px-6 font-semibold transition-colors hover:bg-paper">
+                    Download CV <Arrow />
+                  </a>
+                )}
               </div>
 
               <ul className="mt-12 grid max-w-xl grid-cols-2 gap-x-8 border-t-2 border-ink sm:grid-cols-4">

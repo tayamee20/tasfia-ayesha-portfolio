@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform, type MotionValue } from 'framer-motion';
 import type { PointerEvent } from 'react';
-import { profile } from '../content/site';
+import { links, profile } from '../content/site';
 import { Arrow, ButtonLink } from '../components/ui/ButtonLink';
 import { Shape, type ShapeColor, type ShapeKind } from '../components/ui/Shape';
 import { SplitText } from '../components/ui/SplitText';
@@ -123,6 +123,11 @@ export function Hero() {
               <ButtonLink to="/#work">Explore my work <Arrow /></ButtonLink>
               <ButtonLink to="/#contact" variant="outline">Let’s connect</ButtonLink>
             </div>
+            {links.cv && (
+              <a href={links.cv} download className="ink-link mt-5 inline-block font-semibold">
+                Download my CV (PDF)
+              </a>
+            )}
           </motion.div>
         </div>
       </div>

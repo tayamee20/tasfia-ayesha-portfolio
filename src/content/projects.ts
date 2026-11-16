@@ -7,7 +7,7 @@ import type { Project } from '../lib/types';
  * - Images: put files in /public/images/projects/<slug>/ and set `src: '/images/projects/<slug>/file.jpg'`.
  *   Leave `src` out and a labelled placeholder appears instead.
  * - Case study text left `undefined` shows as a "Placeholder" block telling you what to write.
- *   Nothing here is invented: only facts you provided, or that are on the live sites, are filled in.
+ *   Problem, approach, challenges and learnings are drafts written from the briefs and live sites. Review them.
  * - Figma links only work for visitors if the file is shared as "Anyone with the link can view".
  */
 export const projects: Project[] = [
@@ -15,9 +15,9 @@ export const projects: Project[] = [
     slug: 'equipa',
     name: 'Equipa',
     summary: 'An invite-only training app connecting trainees with their trainers and gyms, with separate experiences for trainees, trainers and admins.',
-    role: 'UI/UX designer',
+    role: 'UI/UX designer and front-end developer',
     year: '2026',
-    status: 'Draft for review',
+    status: 'In testing',
     categories: ['Product design', 'Mobile and web', 'Fitness', 'Design system'],
     accent: 'lime',
     cover: {
@@ -29,6 +29,7 @@ export const projects: Project[] = [
     facts: [
       { label: 'Through', value: 'TUTORS Finland Oy' },
       { label: 'Platform', value: 'Mobile app and web' },
+      { label: 'Team', value: 'Front end built with the TUTORS development team' },
     ],
     links: [
       { label: 'View in Figma', href: 'https://www.figma.com/design/0UH3fXo0qbHM48S5qdMrIF/Equipa?node-id=0-1&p=f&t=QxW79nQtoyL6eOv6-0' },
@@ -36,7 +37,7 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       overview:
-        'Equipa is one app with two sides: trainees on one, trainers and admins on the other, with access by invitation only. Trainees can train with a personal trainer or through a gym. The first full version of the product design covers foundations, a component library, the access model and the screens for every role.',
+        'Equipa is one app with two sides: trainees on one, trainers and admins on the other, with access by invitation only. Trainees can train with a personal trainer or through a gym. I designed the first full version of the product, from foundations and a component library to the access model and the screens for every role, and then built the front end with my team. The app is now in testing.',
       responsibilities: [
         'Foundations: colour, type and spacing',
         'Component library (30 components plus icons)',
@@ -45,12 +46,30 @@ export const projects: Project[] = [
         'Trainer experience (web and mobile)',
         'Admin experience (web and mobile)',
         'Journey maps for trainees and trainers',
+        'Front-end development with the team',
+        'Testing and fixes',
       ],
+      problem:
+        "Training with a coach involves three kinds of people who need very different things: trainees following a program, trainers building and tracking programs, and admins running a gym or a coaching business. Trainees can also train in two ways, with a personal trainer or through a gym. Equipa needed one product that serves all of them, keeps access invite-only, and still feels simple from each person’s side.",
+      objectives: [
+        "Give each role an experience built around what it actually does, without splitting the product into separate apps.",
+        "Make the invite-only access model clear: who can see what, and how people join.",
+        "Build one design system that works across web and mobile.",
+        "Hand over designs that could be built as drawn, then build them.",
+      ],
+      approach:
+        "I started with the access model rather than the screens: roles, permissions and how people get invited, drawn as flow diagrams, because who sees what shapes every screen after it. With that agreed, I set up the foundations (colour, type and spacing) and a component library of 30 components plus icons.\n\nThen I designed each side of the product: 27 mobile screens for trainees, covering both personal and gym training, and web and mobile experiences for trainers and admins. Journey maps for trainees and trainers helped me check the flows end to end before anything was built.\n\nAfter the design, I built the front end with the TUTORS development team, so the designs and the code stayed close. The app is now in testing, and fixes go back into both the designs and the build.",
       wireframes: [{ alt: 'Equipa access model and journey maps', placeholder: 'Access model diagram or a journey map' }],
       finalDesigns: [
         { alt: 'Equipa trainee mobile screens', placeholder: 'Trainee mobile screens' },
         { alt: 'Equipa trainer dashboard', placeholder: 'Trainer web dashboard' },
       ],
+      challenges:
+        "Three roles, two platforms and two ways to train add up to a lot of combinations. The hard part was keeping each role focused on what it needs while the whole thing still felt like one product, and keeping the access model simple enough to explain in one diagram.",
+      learnings:
+        "Designing the access model first saved a lot of rework later. Building the front end myself also showed me which design decisions were easy to implement and which ones cost the team time, and I now design with that in mind.",
+      conclusion:
+        "Equipa went from an access model and a design system to a working app with separate experiences for trainees, trainers and admins. It is currently in testing, and I’ll update this case study as it launches.",
     },
   },
   {
@@ -87,6 +106,16 @@ export const projects: Project[] = [
         'Client success stories',
         'Client communication and requirements',
       ],
+      problem:
+        "XC Party coaches four sports, from beginners to competitive athletes, and sells coaching programs and camps. Its website needed to help each visitor find the right coaching quickly, and to show its strongest proof: the results of the athletes it coaches.",
+      objectives: [
+        "Help visitors find the right coaching for their sport and level.",
+        "Put client success stories where people would see them.",
+        "Let people buy programs and camps directly from the site.",
+        "Keep the site easy for the client to update in Elementor.",
+      ],
+      approach:
+        "I redesigned the site with Md Ferdous Mondol, and Filip B. built it in Elementor. We restructured the site around how people choose a coach. The homepage starts with a simple question, what are you most interested in, which leads each visitor to their sport. Client stories became a carousel of real athletes with their results, and the coaching programs and camps can be bought straight from the homepage.\n\nI was also the client’s main contact on the design side. I helped them put what they wanted from the redesign into words, turned their feedback into clear changes for the team, and handled the fixes after launch.",
       wireframes: [
         { alt: 'XC Party site map and structure', placeholder: 'Site map or new page structure' },
         { alt: 'XC Party homepage wireframe', placeholder: 'Homepage wireframe' },
@@ -107,6 +136,12 @@ export const projects: Project[] = [
           height: 1050,
         },
       ],
+      challenges:
+        "A lot of different content (four sports, programs, camps, coaches and stories) had to share one homepage without crowding it. Client feedback also tended to arrive as general impressions, so a big part of my job was turning it into specific changes the team could act on.",
+      learnings:
+        "Good client communication is part of the design work. Asking the right questions early meant fewer rounds of changes later. Leading with a choice (\"what are you most interested in\") made a broad offer feel personal.",
+      conclusion:
+        "The redesigned site is live at xcparty.fi, with clearer routes to each sport, client stories on the homepage and programs that can be bought directly.",
     },
   },
   {
@@ -140,6 +175,16 @@ export const projects: Project[] = [
         'Job portal experiences',
         'Ongoing interface improvements across the product',
       ],
+      problem:
+        "Planning a career means bringing together your skills, what to learn next and which jobs fit, which usually live in different places. NeduAI brings these into one AI-powered platform built around SmartProfile. Each part of the product had to be easy to use on its own and still feel like part of the same experience.",
+      objectives: [
+        "Make onboarding quick and clear, so people reach value fast.",
+        "Make SmartProfile and AI suggestions easy to understand and act on.",
+        "Keep dashboards focused on what to do next.",
+        "Keep the interface consistent as new features were added.",
+      ],
+      approach:
+        "Over eight months I worked with the NeduAI design team across several parts of the product: Smart Profile, the Career Advisor, dashboards, onboarding and the job portal. Most of the work was iterative. We designed a flow, reviewed it with the team, refined it and moved on, while also improving existing screens across the product.",
       wireframes: [
         { alt: 'Smart Profile wireframes', placeholder: 'Smart Profile wireframes or early sketches' },
         { alt: 'Onboarding flow iterations', placeholder: 'Onboarding flow, first and later iterations' },
@@ -149,6 +194,12 @@ export const projects: Project[] = [
         { alt: 'Dashboard final UI', placeholder: 'Dashboard final screen' },
         { alt: 'Job portal final UI', placeholder: 'Job portal final screen' },
       ],
+      challenges:
+        "The product covers a lot of ground, from learning to job search, and new features kept arriving. Keeping each new part consistent with the rest, while still giving it space to do its job, was the ongoing challenge.",
+      learnings:
+        "Working inside a larger design team taught me to design for the whole system, not just the screen in front of me, and to make my decisions easy for others to pick up and continue.",
+      conclusion:
+        "I worked on NeduAI from November 2024 to June 2025. The platform is live at nedu.ai.",
     },
   },
   {
@@ -184,6 +235,16 @@ export const projects: Project[] = [
         'Workshops, activities and learning pages',
         'Partner and team pages',
       ],
+      problem:
+        "The project brings together students aged 12–16 and partner schools and organisations in Poland, Türkiye, Spain and Finland. It needed one place where students’ animations and presentations, workshops and learning resources could be found and shared, and that young students, teachers and partners could all use easily.",
+      objectives: [
+        "Put the students’ work at the centre of the site.",
+        "Keep it simple and inviting for a 12–16 audience.",
+        "Make workshops, activities and resources easy to find for teachers.",
+        "Show the partners and leave room for the site to grow with the project.",
+      ],
+      approach:
+        "I designed the site around its content. Student work comes first, with featured animations and slide presentations near the top of the homepage. Workshops, activities and learning resources each have their own pages, and partner and team pages show who is involved across the four countries. Because the project is ongoing, I designed sections that can take new work without being redesigned.",
       wireframes: [{ alt: 'AnimateEarth wireframes', placeholder: 'Wireframes or early sketches' }],
       finalDesigns: [
         {
@@ -194,6 +255,12 @@ export const projects: Project[] = [
           height: 860,
         },
       ],
+      challenges:
+        "The site has several audiences at once, students, teachers, partners and the EU funding body, and new content keeps arriving. It had to stay simple for young visitors while still covering everything the project needs to show.",
+      learnings:
+        "Designing for a project that is still happening means designing for content you haven’t seen yet. Flexible sections and clear content types matter more than perfect individual pages.",
+      conclusion:
+        "AnimateEarth is ongoing. The site is live at animearth.eu and keeps growing as students add new work.",
     },
   },
   {
@@ -229,8 +296,24 @@ export const projects: Project[] = [
         'Impact areas and project pages',
         'Events, FAQ and contact',
       ],
+      problem:
+        "Rotary Club Mijas International does a lot, from local and international projects to events and fundraising, and relies on new members to keep going. Its website needed to show that impact clearly and make it easy for visitors to get involved.",
+      objectives: [
+        "Lead with the club’s impact, not just its history.",
+        "Make upcoming events easy to find.",
+        "Give visitors a clear way to join or get in touch.",
+        "Work well on mobile as well as desktop.",
+      ],
+      approach:
+        "As project lead, I plan the work, keep in touch with the club and make sure decisions are agreed before the design moves on. I started with a new sitemap to settle what the site should contain. Then I designed the homepage for desktop and mobile: the club’s four impact areas come first, followed by upcoming events, members’ stories and a clear call to join. Pages for impact areas and projects, events, FAQ and contact follow from the sitemap.",
       wireframes: [{ alt: 'Rotary Mijas sitemap', placeholder: 'Website sitemap v2' }],
       finalDesigns: [],
+      challenges:
+        "As a volunteer club, Rotary Mijas has many voices and a lot of content. Leading the project meant agreeing on priorities with the club first, so the design could stay focused.",
+      learnings:
+        "Leading the project as well as designing it showed me how much smoother design goes when the structure and priorities are agreed early. The sitemap was as much a communication tool as a design one.",
+      conclusion:
+        "The redesign is in the design phase. I’ll add the final designs and results here as the project moves forward.",
     },
   },
   {
@@ -266,6 +349,16 @@ export const projects: Project[] = [
         'Mission flow: briefing, flight, debrief and progress',
         'Main menu and navigation',
       ],
+      problem:
+        "Training to fly a drone in a simulator puts a lot of information on screen at once: the map, the aircraft’s status, the mission checklist and live flight data. If the interface is crowded, trainees spend their attention reading it instead of flying.",
+      objectives: [
+        "Keep the drone’s path and the map clear during flight.",
+        "Make battery, GPS, signal and mission progress readable at a glance.",
+        "Make the whole mission flow clear, from briefing and flight to debrief and progress.",
+        "Help trainees learn from each flight through a useful debrief.",
+      ],
+      approach:
+        "I mapped the mission flow first: main menu, briefing, flight, debrief and progress. During flight, the interface keeps the mission checklist, aircraft status and flight data around the edges of the screen and leaves the centre for the drone’s path. After each mission, the debrief brings together the score, flight stats, the recorded video and an altitude analysis. The technical stack (Leaflet maps, PrimeNG components, Unreal Engine) shaped what the interface needed to support, so I designed with it in mind.",
       wireframes: [],
       finalDesigns: [
         {
@@ -283,6 +376,12 @@ export const projects: Project[] = [
           height: 928,
         },
       ],
+      challenges:
+        "The product has a lot of live data and a complex technical setup. The challenge is deciding what a trainee needs at each moment of a mission, and what can wait until the debrief.",
+      learnings:
+        "In complex interfaces, the most important design decision is often what to leave out of the main view. Designing around the mission flow, rather than around the data, kept that decision clear.",
+      conclusion:
+        "GameSim is in the design phase. I’ll update this case study as the designs are tested and built.",
     },
   },
 ];

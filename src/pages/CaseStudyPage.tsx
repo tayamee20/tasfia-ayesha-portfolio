@@ -23,7 +23,12 @@ function Block({ title, children, id }: { title: string; children: ReactNode; id
   );
 }
 
-const Prose = ({ text }: { text: string }) => <p className="max-w-prose text-xl leading-relaxed">{text}</p>;
+/** Body text. A blank line in the source (\n\n) starts a new paragraph. */
+const Prose = ({ text }: { text: string }) => (
+  <div className="max-w-prose space-y-5 text-xl leading-relaxed">
+    {text.split(/\n{2,}/).map((para, i) => <p key={i}>{para}</p>)}
+  </div>
+);
 
 export function CaseStudyPage() {
   const { slug } = useParams();
