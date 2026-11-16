@@ -19,10 +19,9 @@ export const profile = {
 export const links = {
   email: 'tayesha2001@gmail.com',
   behance: 'https://www.behance.net/tayesha',
-  // TODO: replace with your real profile URLs.
   linkedin: 'https://www.linkedin.com/in/tasfia-ayesha-129708210/?trk=opento_sprofile_details',
-  dribbble: 'https://dribbble.com/your-handle',
-  github: 'https://github.com/your-handle',
+  dribbble: 'https://dribbble.com/tayami',
+  github: 'https://github.com/tayamee20',
   // TODO: upload your CV to /public and point to it, e.g. '/Tasfia-Ayesha-CV.pdf'
   cv: '',
 };
